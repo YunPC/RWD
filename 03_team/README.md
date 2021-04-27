@@ -22,7 +22,7 @@
 
 모바일 버전과 데스크톱 버전 두 개의 사이트를 가지고 있으면 url 이 다르기 때문에, 버전이 많으면 많을 수록 검색엔진은 중복되는 자료들 때문에 스팸으로 인식할수도 있고, 정확한 정보를 확인할 수 없어지게 됩니다. 하지만 반응형으로 웹사이트를 구축한다면, 하나의 url 로 관리되기 때문에, 상대적으로 SEO에 유리하게 됩니다.
 
-### 접근성
+## 반응형 웹에서의 접근성
 
 데스크톱 웹에서와 마찬가지로 접근성에 대한 고민을 해야할 필요가 있습니다. 특히 모바일의 경우 다른 차원의 접근성 문제가 발생할 수 있기 때문에, 다른 기준의 접근성을 정의할 필요가 있습니다. 한국웹접근성인증평가원은 모바일 애플리케이션에서 지켜야 할 접근성에 대해 18개의 기준을 제시합니다.
 
@@ -56,11 +56,11 @@
 !["웹 접근성에 대한 예시로 현대증권의 기준 충족치를 보여주는 이미지"](./images/1_2.png)
 위 예시는 현대증권에 대한 예시로 시간은 많이 지났지만, 모바일 구성을 잘한 예시라 생각되어 인용했습니다. 먼저 태블릿 환경까지 신경써서 3개의 화면을 적절한 구성으로 배치했으며 누락된 정보가 없습니다. 또한 접근성에 대해서도 지침을 잘 준수하여, 차별 없이 웹을 사용할 수 있게 만들었습니다.
 
-## 2. 고정형 웹사이트와의 차이?
+## 2. 고정형 웹사이트와의 차이
 
 ### 미디어 쿼리
 
-#### 미디어 쿼리란?
+#### 미디어 쿼리란
 
 미디어 쿼리는 CSS3에서 소개된 CSS 기법입니다.
 `@media`를 통해 선언할 수 있으며 지정해 놓은 특정 조건을 만족할때 해당 CSS속성을 적용시킵니다.
@@ -70,7 +70,7 @@
 
 일반적으로 어떤 종류의 미디어인지와 화면 크기를 비교해 반응형 웹을 구현하는데 이 밖에도 해상도, 비트 수, 가로 / 세로 여부 등 다양하고 세밀한 부분까지 탐지하여 적용을 할 수 있습니다.
 
-#### 미디어 쿼리의 목적?
+#### 미디어 쿼리의 목적
 
 미디어 쿼리를 사용하는 주 목적은 각 유형의 장치에 적절한 사용자 경험을 만드는 것입니다. 미디어 쿼리를 사용하면 각 장치의 고유한 속성을 기반으로 클라이언트 브라우저에 응답 할 수 있게 만들어 줍니다. 웹 페이지가 로드되서 브라우저에 표시되기 전 미디어 쿼리를 통해 적용된 CSS가 반영이 됩니다.
 
@@ -81,7 +81,7 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 
 미디어 쿼리를 이용하면 특정 장애가 있는 사용자 및 일반 사용자들의 접근성 또한 개선할 수 있습니다.
 
-예를들면 광과민성 증후군 및 주의력결핍 장애가 있는 사용자들에게 깜빡이거나 반짝이는 애니메이션은 발작 유발 및 웹 페이지의 이해를 어렵게 만들수 있습니다.
+예를 들면 광과민성 증후군 및 주의력결핍 장애가 있는 사용자들에게 깜빡이거나 반짝이는 애니메이션은 발작 유발 및 웹 페이지의 이해를 어렵게 만들수 있습니다.
 이를 미디어 쿼리를 이용한 애니메이션 동작 축소하기 (Reduced Motion)기법으로 개선할 수 있습니다.
 
 또한 이 기법을 이용하면 배터리가 부족한 사용자 혹은 보급형 스마트폰 및 컴퓨터를 사용하는 사용자들의 접근성도 개선할 수 있습니다.
@@ -101,12 +101,12 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 미디어 특성과 미디어 유형을 조합할때도 사용할 수 있습니다.
 
 **`not`**
-`not` 연산자는 `and` 연산자가 사용된 쿼리가 거짓일때 참을 반환합니다.
+`not` 연산자는 `and` 연산자가 사용된 쿼리가 거짓일 때 참을 반환합니다.
 `and` 연산자와 다르게 쉼표로 구분한 쿼리 목록 중 하나에 적용하게 되면 해당하는 쿼리에만 적용이 됩니다.
 해당 연산자를 사용할 경우 반드시 미디어 유형도 함께 지정해서 사용해야 합니다.
 
 **`only`**
-`only` 연산자는 전체 쿼리문이 일치할때만 동작하게 설정할 수 있어 오래된 브라우저가 스타일을 잘못 적용하지 못하도록 방지할때 유용하게 사용할 수 있습니다. `not` 연산자와 마찬가지로 반드시 미디어 유형도 함께 지정해서 사용해야 합니다.
+`only` 연산자는 전체 쿼리문이 일치할 때만 동작하게 설정할 수 있어 오래된 브라우저가 스타일을 잘못 적용하지 못하도록 방지할때 유용하게 사용할 수 있습니다. `not` 연산자와 마찬가지로 반드시 미디어 유형도 함께 지정해서 사용해야 합니다.
 
 **`,(쉼표)`**
 `쉼표` 연산자는 다수의 미디어 쿼리문을 하나의 규칙으로 조합하여 사용할때 유용하게 사용됩니다. `and` 연산자와 다르게 쿼리문의 구성 요소 중 하나의 쿼리만 참일 경우에도 동작합니다.
@@ -180,7 +180,7 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 
 미디어 쿼리를 이용해 애니메이션을 축소해서 접근성 개선한 예시입니다.
 
-아래의 예시처럼 코드를 작성하게 되면 사용자가 기기에서 애니메이션 축소와 관련된 기능을 설정하였을 경우 아래의 미디어 쿼리 스타일링이 적용돼 어떠한 애니메이션도 보여지지 않게 됩니다.
+아래의 예시처럼 코드를 작성하게 되면 사용자가 기기에서 애니메이션 축소와 관련된 기능을 설정하였을 경우 아래의 미디어 쿼리 스타일링이 적용되어 어떠한 애니메이션도 보여지지 않게 됩니다.
 
 ```html
 <div class="animation">animated box</div>
@@ -263,14 +263,15 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 
 뷰포트를 기준으로 한 단위이며 '1vw = 뷰포트 너비의 1% 입니다.
 
-#### vh(Viewport Height) 
+#### vh(Viewport Height)
+
 vw와 마찬가지로 뷰포트 높이의 1%를 칭합니다.
 
 ##### vw와 vh 활용법
 
 이들 단위는 뷰포트 영역 전체를 차지하게 하거나, 그 일부분만 차지하게 하는 데 유용하게 쓸 수 있습니다. 따라서 사용자 브라우저 창 크기를 바꾸거나 모바일 화면을 회전시켜도 유연하게 대처할 수 있습니다.
 
-이 단위들은 `calc()`와 결합하면 좋은 시너지를 낼 수 있습니다. 헤더 영역 높이가 50px이고 컨텐츠 영역 높이를 '헤더를 제외한 나머지 높이 전체'로 만들고 싶다면, `height: calc(100vh - 50px)`을 지정해주면 됩니다.
+이 단위들은 `calc()`와 결합하면 좋은 시너지를 낼 수 있습니다. 헤더 영역 높이가 50px이고 콘텐츠 영역 높이를 '헤더를 제외한 나머지 높이 전체'로 만들고 싶다면, `height: calc(100vh - 50px)`을 지정해주면 됩니다.
 
 `height: 100%`로 지정해도 100vh처럼 전체 높이를 차지할 수 있지만, `%`의 경우 부모 요소를 기준으로 계산하기 때문에 이 경우 부모 요소에도 `height: 100%`을 추가하여야 합니다.
 
@@ -286,7 +287,7 @@ vw와 vh 중 더 큰 것을 적용합니다.
 
 이 둘을 적절히 활용하면 '언제든 화면에 보이는 요소'와 '언제든 화면을 꽉 채우는 요소'를 만들 수 있습니다.
 
-예를 들어 뷰포트가 1000px * 1000px일 때, 80vw를 길이로 가지는 정사각형 요소가 있다고 가정합니다. 만약 여기서 높이가 줄어들면(휴대폰 가로모드) vw는 변하지 않아 요소가 잘려서 보입니다. 만약 이를 80vmin으로 고친다면 너비/높이 값 중 무엇이 바뀌던 상관없이 정사각형 요소를 나타낼 수 있습니다.
+예를 들어 뷰포트가 1000px \* 1000px일 때, 80vw를 길이로 가지는 정사각형 요소가 있다고 가정합니다. 만약 여기서 높이가 줄어들면(휴대폰 가로모드) vw는 변하지 않아 요소가 잘려서 보입니다. 만약 이를 80vmin으로 고친다면 너비/높이 값 중 무엇이 바뀌던 상관없이 정사각형 요소를 나타낼 수 있습니다.
 
 **호환성**
 |![반응형 단위 호환성1](images/compatability_5.png)|
@@ -299,9 +300,9 @@ vw와 vh 중 더 큰 것을 적용합니다.
 
 **호환성**
 
-|![반응형 단위 호환성2](images/compatability_6.png)|
-|:--:|
-|em 호환성|
+| ![반응형 단위 호환성2](images/compatability_6.png) |
+| :------------------------------------------------: |
+|                     em 호환성                      |
 
 #### rem
 
@@ -309,9 +310,9 @@ rem(relative to the root element)는 HTML 문서에서 최상위 요소 `<html>`
 
 **호환성**
 
-|![반응형 단위 호환성3](images/compatability_7.png)|
-|:--:|
-|rem 호환성|
+| ![반응형 단위 호환성3](images/compatability_7.png) |
+| :------------------------------------------------: |
+|                     rem 호환성                     |
 
 ##### em과 rem 활용법
 
@@ -323,118 +324,132 @@ rem(relative to the root element)는 HTML 문서에서 최상위 요소 `<html>`
 
 ```html
 <!-- 500px x 500px -->
-<img src="heropy.png" alt="히어로파이 이미지">
+<img src="heropy.png" alt="히어로파이 이미지" />
 ```
-|![이미지 태그 예제](images/3_1.png)|
-|:--:|
-|이미지 태그 예제|
 
+| ![이미지 태그 예제](images/3_1.png) |
+| :---------------------------------: |
+|          이미지 태그 예제           |
 
-그러나 `srcset`과 `sizes`라는 두 가지 속성을 사용해 브라우저가 뷰포트 너비에 따른 그림을 선택하도록 할 수 있습니다. 
+그러나 `srcset`과 `sizes`라는 두 가지 속성을 사용해 브라우저가 뷰포트 너비에 따른 그림을 선택하도록 할 수 있습니다.
 
 - srcset
 
-    `srcset`은 브라우저에게 제시할 이미지 목록과 그 크기를 정의합니다. 각 쉼표 앞에 3가지를 적습니다.
+  `srcset`은 브라우저에게 제시할 이미지 목록과 그 크기를 정의합니다. 각 쉼표 앞에 3가지를 적습니다.
 
-    1. 이미지 파일명
-    2. 공백
-    3. 이미지 고유 픽셀 너비
+  1. 이미지 파일명
+  2. 공백
+  3. 이미지 고유 픽셀 너비
 
-    이때 주의 할 점은 이미지의 크기로 `px`단위가 아닌 `w` 디스크립터 혹은 `x` 디스크립터를 입력해야 하며, 작은 크기 이미지부터 순서대로 입력해야 합니다.
+  이 때 주의 할 점은 이미지의 크기로 `px`단위가 아닌 `w` 디스크립터 혹은 `x` 디스크립터를 입력해야 하며, 작은 크기 이미지부터 순서대로 입력해야 합니다.
 
-    - W descriptor
-        `w`디스크립터(Width descriptor)는 이미지의 원본 크기(가로 너비)를 의미합니다. 예를 들어 `400x300`(px) 크기 이미지의 `w` 값은 `400w`입니다.
+  - W descriptor
+    `w` 디스크립터(Width descriptor)는 이미지의 원본 크기(가로 너비)를 의미합니다. 예를 들어 `400x300`(px) 크기 이미지의 `w` 값은 `400w`입니다.
 
-        > 브라우저(User agent)는 지정된 `w` 디스크립터를 통해 각 이미지의 최적화된 픽셀 밀도를 계산합니다.
+    > 브라우저(User agent)는 지정된 `w` 디스크립터를 통해 각 이미지의 최적화된 픽셀 밀도를 계산합니다.
 
-        **srcset 예시**
-
-        ```html
-        <img
-            srcset="images/heropy_small.png 400w,
-                    images/heropy_medium.png 700w,
-                    images/heropy_large.png 1000w"
-            src="images/heropy.png"
-            alt="HEROPY"
-        />
-        ```
-
-        |![히어로 파이 w 예제1](images/3_2_small.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(small)|
-        뷰 포트 너비가 400px 이하일 때 `heropy_small.png`(400px)가 사용된 것을 볼 수 있습니다.
-
-        |![히어로 파이 w 예제2](images/3_2_medium.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(medium)|
-        뷰 포트 너비가 401~700px 이하일 때 `heropy_medium.png`(700px)가 사용된 것을 볼 수 있습니다.
-
-        |![히어로 파이 w 예제3](images/3_2_large.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(large)|
-        뷰 포트 너비가 401~700px 이하일 때 `heropy_large.png`(1000px)가 사용된 것을 볼 수 있습니다.
-
-        고정된 이미지 크기를 유지하려면 `width` 속성을 추가할 수 있습니다.
-
-        **srcset+width 예시**
-
-        ```html
-        <img
-            srcset="images/heropy_small.png 400w,
-                    images/heropy_medium.png 700w,
-                    images/heropy_large.png 1000w"
-            width="400"
-            src="images/heropy.png"
-            alt="HEROPY" />
-        ```
-        |![히어로 파이 width 예제1](images/3_3_small.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(small)|
-
-        |![히어로 파이 width 예제2](images/3_3_medium.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(medium)|
-
-        |![히어로 파이 width 예제2](images/3_3_large.png)|
-        |:--:|
-        |w 스크립터를 이용한 반응형 디자인(large)|
-    
-    - X descriptor
-        x 디스크립터는 이미지의 비율 의도를 의미합니다. 위 `w` 디스크립터에서 사용했던 예제를 다음과 같이 수정할 수 있습니다.
-        
-        ```html
-        <img
-            srcset="images/heropy_small.png 1x,
-                    images/heropy_medium.png 1.75x,
-                    images/heropy_large.png 2.5x"
-            src="images/heropy.png"
-            alt="HEROPY"
-        />
-        ```
-
-        `x` 디스크립터는 디바이스의 픽셀 비율(Device pixel ration)과 일치하는 값으로 최적화 선택됩니다. 일반적으로 정수(integer)값으로 제공하는 것이 좋습니다.
-
-
-- sizes
-
-    `sizes`는 미디어 조건과 그 조건에 해당하는 이미지의 '최적화 출력 크기'를 지정합니다.
+    **srcset 예시**
 
     ```html
     <img
-        srcset="images/heropy_small.png 400w,
-                images/heropy_medium.png 700w,
-                images/heropy_large.png 1000w"
-        sizes="(min-width: 1000px) 700px"
-        src="images/heropy.png"
-        alt="HEROPY" />
+      srcset="
+        images/heropy_small.png   400w,
+        images/heropy_medium.png  700w,
+        images/heropy_large.png  1000w
+      "
+      src="images/heropy.png"
+      alt="HEROPY"
+    />
     ```
-    `sizes` 속성에 `min-width:1000px`이 추가되었기 때문에 이제 1000px이상일 경우에는 `heropy_medium.png`가 나타납니다.
 
-    |![sizes min-width 예시](images/3_4_medium.png)|
-    |:--:|
-    |sizes 속성에 min-width 추가 화면|
+    | ![히어로 파이 w 예제1](images/3_2_small.png) |
+    | :------------------------------------------: |
+    |   w 스크립터를 이용한 반응형 디자인(small)   |
 
-    여기서 만약에 미디어 조건을 생략했을 경우 뷰포트 너비와 상관없이 `heropy_medium.png`만 사용되고 항상 `700px`의 크기를 가집니다.
+    뷰 포트 너비가 400px 이하일 때 `heropy_small.png`(400px)가 사용된 것을 볼 수 있습니다.
+
+    | ![히어로 파이 w 예제2](images/3_2_medium.png) |
+    | :-------------------------------------------: |
+    |   w 스크립터를 이용한 반응형 디자인(medium)   |
+
+    뷰 포트 너비가 401~700px 이하일 때 `heropy_medium.png`(700px)가 사용된 것을 볼 수 있습니다.
+
+    | ![히어로 파이 w 예제3](images/3_2_large.png) |
+    | :------------------------------------------: |
+    |   w 스크립터를 이용한 반응형 디자인(large)   |
+
+    뷰 포트 너비가 401~700px 이하일 때 `heropy_large.png`(1000px)가 사용된 것을 볼 수 있습니다.
+
+    고정된 이미지 크기를 유지하려면 `width` 속성을 추가할 수 있습니다.
+
+    **srcset+width 예시**
+
+    ```html
+    <img
+      srcset="
+        images/heropy_small.png   400w,
+        images/heropy_medium.png  700w,
+        images/heropy_large.png  1000w
+      "
+      width="400"
+      src="images/heropy.png"
+      alt="HEROPY"
+    />
+    ```
+
+    | ![히어로 파이 width 예제1](images/3_3_small.png) |
+    | :----------------------------------------------: |
+    |     w 스크립터를 이용한 반응형 디자인(small)     |
+
+    | ![히어로 파이 width 예제2](images/3_3_medium.png) |
+    | :-----------------------------------------------: |
+    |     w 스크립터를 이용한 반응형 디자인(medium)     |
+
+    | ![히어로 파이 width 예제2](images/3_3_large.png) |
+    | :----------------------------------------------: |
+    |     w 스크립터를 이용한 반응형 디자인(large)     |
+
+  - X descriptor
+    x 디스크립터는 이미지의 비율 의도를 의미합니다. 위 `w` 디스크립터에서 사용했던 예제를 다음과 같이 수정할 수 있습니다.
+
+    ```html
+    <img
+      srcset="
+        images/heropy_small.png  1x,
+        images/heropy_medium.png 1.75x,
+        images/heropy_large.png  2.5x
+      "
+      src="images/heropy.png"
+      alt="HEROPY"
+    />
+    ```
+
+    `x` 디스크립터는 디바이스의 픽셀 비율(Device pixel ration)과 일치하는 값으로 최적화 선택됩니다. 일반적으로 정수(integer)값으로 제공하는 것이 좋습니다.
+
+- sizes
+
+  `sizes`는 미디어 조건과 그 조건에 해당하는 이미지의 '최적화 출력 크기'를 지정합니다.
+
+  ```html
+  <img
+    srcset="
+      images/heropy_small.png   400w,
+      images/heropy_medium.png  700w,
+      images/heropy_large.png  1000w
+    "
+    sizes="(min-width: 1000px) 700px"
+    src="images/heropy.png"
+    alt="HEROPY"
+  />
+  ```
+
+  `sizes` 속성에 `min-width:1000px`이 추가되었기 때문에 이제 1000px이상일 경우에는 `heropy_medium.png`가 나타납니다.
+
+  | ![sizes min-width 예시](images/3_4_medium.png) |
+  | :--------------------------------------------: |
+  |        sizes 속성에 min-width 추가 화면        |
+
+  여기서 만약에 미디어 조건을 생략했을 경우 뷰포트 너비와 상관없이 `heropy_medium.png`만 사용되고 항상 `700px`의 크기를 가집니다.
 
 결과적으로 `width`는 이미지의 '출력 크기'만을 지정하는데 반해, `sizes`는 이미지의 '출력 크기' + '최적 크기'도 함께 지정하는 개념입니다.
 
@@ -444,7 +459,6 @@ rem(relative to the root element)는 HTML 문서에서 최상위 요소 `<html>`
 |![srcset sizes 호환성](images/compatability_1.png)|
 |:--:|
 |`srcset`과 `sizes`의 호환성|
-
 
 ### picture
 
@@ -462,34 +476,35 @@ rem(relative to the root element)는 HTML 문서에서 최상위 요소 `<html>`
 
 ```html
 <picture>
-    <source media="(min-width: 700px)" srcset="images/heropy_medium.png">
-    <source media="(min-width: 400px)" srcset="/images/heropy_small.png">
-    <img src="images/heropy.png" alt="HEROPY">
+  <source media="(min-width: 700px)" srcset="images/heropy_medium.png" />
+  <source media="(min-width: 400px)" srcset="/images/heropy_small.png" />
+  <img src="images/heropy.png" alt="HEROPY" />
 </picture>
 ```
-|![pictures 예시1](images/3_5_medium.png)|
-|:--:|
-|`pictures`의 첫 번째 `source`|
+
+| ![pictures 예시1](images/3_5_medium.png) |
+| :--------------------------------------: |
+|      `pictures`의 첫 번째 `source`       |
 
 뷰포트 너비가 700px이상이기 때문에 첫번째 `source`요소가 나옵니다.
 
-|![pictures 예시2](images/3_5_small.png)|
-|:--:|
-|`pictures`의 두 번째 `source`|
+| ![pictures 예시2](images/3_5_small.png) |
+| :-------------------------------------: |
+|      `pictures`의 두 번째 `source`      |
 
 뷰포트의 너비가 400~699px 사이에 있기 때문에 두번째 `source`요소가 선택됩니다.
 
-|![pictures 예시3](images/3_5.png)|
-|:--:|
-|`pictures`의 `img`|
+| ![pictures 예시3](images/3_5.png) |
+| :-------------------------------: |
+|        `pictures`의 `img`         |
 
 두 `source`의 조건에 모두 만족하지 못했기 때문에 `heropy.png`파일이 나옵니다.
 
 **호환성**
 
-|![pictures 호환성](images/compatability_2.png)|
-|:--:|
-|`pictures` 호환성|
+| ![pictures 호환성](images/compatability_2.png) |
+| :--------------------------------------------: |
+|               `pictures` 호환성                |
 
 ### flexbox
 
@@ -499,40 +514,41 @@ flextbox는 행이나 열로 아이템을 배치하는 일차원 레이아웃 �
 
 ```html
 <section class="content">
-    <div class="flexbox">
-        <div class="item">content1</div>
-        <div class="item">content2</div>
-        <div class="item">content3</div>
-        <div class="item">content4</div>
-    </div>
+  <div class="flexbox">
+    <div class="item">content1</div>
+    <div class="item">content2</div>
+    <div class="item">content3</div>
+    <div class="item">content4</div>
+  </div>
 </section>
 ```
 
 ```css
-.content{
-    max-width: 800px;
-    margin: 0 auto;
+.content {
+  max-width: 800px;
+  margin: 0 auto;
 }
-.flexbox{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
-.item{
-    min-height: 200px;
-    flex-basis: 150px;
-    flex-grow: 1;
-    background-color: aqua;
-    margin: 10px;
+.item {
+  min-height: 200px;
+  flex-basis: 150px;
+  flex-grow: 1;
+  background-color: aqua;
+  margin: 10px;
 }
 ```
-|![플렉스 예제 1](images/flex_1.png)|
-|:--:|
-|플렉스를 이용한 레이아웃|
 
-|![플렉스 예제 2](images/flex_2.png)|
-|:--:|
-|뷰포트를 줄였을 때 나타나는 플렉스 레이아웃|
+| ![플렉스 예제 1](images/flex_1.png) |
+| :---------------------------------: |
+|      플렉스를 이용한 레이아웃       |
+
+|     ![플렉스 예제 2](images/flex_2.png)     |
+| :-----------------------------------------: |
+| 뷰포트를 줄였을 때 나타나는 플렉스 레이아웃 |
 
 뷰포트를 줄일 때 content4가 아래줄로 내려온 것을 볼 수 있습니다.
 
@@ -540,7 +556,6 @@ flextbox는 행이나 열로 아이템을 배치하는 일차원 레이아웃 �
 |![플렉스 호환성](images/compatability_3.png)|
 |:--:|
 |플렉스 호환성|
-
 
 ### grid
 
@@ -551,46 +566,47 @@ flextbox는 행이나 열로 아이템을 배치하는 일차원 레이아웃 �
 **예시**
 
 ```html
-<ul class=”boxes”>
-    <li>
-        <div class=”boxes__text-wrapper”>
-            <h2>Title</h2>
-            <p>We worked hard.</p>
-        </div>
-    </li>
+<ul class="”boxes”">
+  <li>
+    <div class="”boxes__text-wrapper”">
+      <h2>Title</h2>
+      <p>We worked hard.</p>
+    </div>
+  </li>
 </ul>
 ```
+
 위 코드에서 보이는 `li`태그를 6개로 만든 뒤 화면에 출력하면 다음과 같습니다.
 
-|![그리드 예제](images/grid_1.png)|
-|:--:|
-|목록 생성|
+| ![그리드 예제](images/grid_1.png) |
+| :-------------------------------: |
+|             목록 생성             |
 
 여기서 브라우저가 40em 이상일 때 그리드 컨테이너가 한 부분으로 6개의 컬럼을 갖도록 설정하려고 하면, 다음과 같이 CSS를 작성할 수 있습니다.
 
 ```css
 .boxes {
-    display: grid;
-    grid-auto-rows: minmax(125px, auto);
-    grid-gap: .5rem;
+  display: grid;
+  grid-auto-rows: minmax(125px, auto);
+  grid-gap: 0.5rem;
 }
 @media screen and (min-width: 40em) {
-    .boxes {
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 2px;
-    }
+  .boxes {
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 2px;
+  }
 }
 ```
 
-|![그리드 호환성](images/grid_2.png)|
-|:--:|
-|`grid` 미디어 쿼리 적용 화면|
+| ![그리드 호환성](images/grid_2.png) |
+| :---------------------------------: |
+|    `grid` 미디어 쿼리 적용 화면     |
 
 **호환성**
 
-|![그리드 호환성](images/compatability_4.png)|
-|:--:|
-|`grid` 호환성|
+| ![그리드 호환성](images/compatability_4.png) |
+| :------------------------------------------: |
+|                `grid` 호환성                 |
 
 <details>
 <summary>참고자료</summary>
