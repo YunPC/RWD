@@ -58,7 +58,7 @@
 
 ## 참고자료
 
-https://developer.mozilla.org/ko/docs/Learn/CSS/CSS_layout/Responsive_Design
-http://www.wa.or.kr/m3/sub3.asp
-http://beesflow.co.kr/blog
-https://www.slideshare.net/labsnc/04-28190062
+- https://developer.mozilla.org/ko/docs/Learn/CSS/CSS_layout/Responsive_Design
+- http://www.wa.or.kr/m3/sub3.asp
+- http://beesflow.co.kr/blog
+- https://www.slideshare.net/labsnc/04-28190062
