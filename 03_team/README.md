@@ -257,6 +257,341 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 
 대부분의 브라우저에서 호환성이 좋은 것으로 확인되나 Internet Explore에서는 좋지 않은 호환성을 지니고 있습니다. 또한 Firefox 브라우저에서도 약간의 호환성 문제가 있는 것으로 보여지지만 자주 사용되는 특성들에 대해서는 대부분 호환이 가능한 모습입니다.
 
+### 반응형 단위
+
+#### vw(Viewport Width)
+
+뷰포트를 기준으로 한 단위이며 '1vw = 뷰포트 너비의 1% 입니다.
+
+#### vh(Viewport Height) 
+vw와 마찬가지로 뷰포트 높이의 1%를 칭합니다.
+
+##### vw와 vh 활용법
+
+이들 단위는 뷰포트 영역 전체를 차지하게 하거나, 그 일부분만 차지하게 하는 데 유용하게 쓸 수 있습니다. 따라서 사용자 브라우저 창 크기를 바꾸거나 모바일 화면을 회전시켜도 유연하게 대처할 수 있습니다.
+
+이 단위들은 `calc()`와 결합하면 좋은 시너지를 낼 수 있습니다. 헤더 영역 높이가 50px이고 컨텐츠 영역 높이를 '헤더를 제외한 나머지 높이 전체'로 만들고 싶다면, `height: calc(100vh - 50px)`을 지정해주면 됩니다.
+
+`height: 100%`로 지정해도 100vh처럼 전체 높이를 차지할 수 있지만, `%`의 경우 부모 요소를 기준으로 계산하기 때문에 이 경우 부모 요소에도 `height: 100%`을 추가하여야 합니다.
+
+#### vmin
+
+vmin은 vw와 vh중 더 작은 것을 적용합니다.
+
+#### vmax
+
+vw와 vh 중 더 큰 것을 적용합니다.
+
+##### vmin과 vmax 활용법
+
+이 둘을 적절히 활용하면 '언제든 화면에 보이는 요소'와 '언제든 화면을 꽉 채우는 요소'를 만들 수 있습니다.
+
+예를 들어 뷰포트가 1000px * 1000px일 때, 80vw를 길이로 가지는 정사각형 요소가 있다고 가정합니다. 만약 여기서 높이가 줄어들면(휴대폰 가로모드) vw는 변하지 않아 요소가 잘려서 보입니다. 만약 이를 80vmin으로 고친다면 너비/높이 값 중 무엇이 바뀌던 상관없이 정사각형 요소를 나타낼 수 있습니다.
+
+**호환성**
+|![반응형 단위 호환성1](images/compatability_5.png)|
+|:--:|
+|vw, vh, vmin, vmax 호환성|
+
+#### em
+
+`em`은 폰트 크기의 영향을 받습니다. 1em은 부모의 폰트 크기입니다. 만약 부모의 폰트 크기가 16px이라면, 1em = 16px이 되고 2em = 32px이 됩니다.
+
+**호환성**
+
+|![반응형 단위 호환성2](images/compatability_6.png)|
+|:--:|
+|em 호환성|
+
+#### rem
+
+rem(relative to the root element)는 HTML 문서에서 최상위 요소 `<html>`에 선언된 폰트 크기를 기준으로 하는 단위입니다.
+
+**호환성**
+
+|![반응형 단위 호환성3](images/compatability_7.png)|
+|:--:|
+|rem 호환성|
+
+##### em과 rem 활용법
+
+이 둘은 부모의 폰트값에 영향을 받기 때문에 제목에 크기에 따라 안에 들어있는 콘텐츠의 크기를 조정할 때 유용합니다.
+
+### img 태그
+
+기본 `<img>` 요소에서는 브라우저에게 오직 하나의 소스 파일만 제시할 수 있습니다.
+
+```html
+<!-- 500px x 500px -->
+<img src="heropy.png" alt="히어로파이 이미지">
+```
+|![이미지 태그 예제](images/3_1.png)|
+|:--:|
+|이미지 태그 예제|
+
+
+그러나 `srcset`과 `sizes`라는 두 가지 속성을 사용해 브라우저가 뷰포트 너비에 따른 그림을 선택하도록 할 수 있습니다. 
+
+- srcset
+
+    `srcset`은 브라우저에게 제시할 이미지 목록과 그 크기를 정의합니다. 각 쉼표 앞에 3가지를 적습니다.
+
+    1. 이미지 파일명
+    2. 공백
+    3. 이미지 고유 픽셀 너비
+
+    이때 주의 할 점은 이미지의 크기로 `px`단위가 아닌 `w` 디스크립터 혹은 `x` 디스크립터를 입력해야 하며, 작은 크기 이미지부터 순서대로 입력해야 합니다.
+
+    - W descriptor
+        `w`디스크립터(Width descriptor)는 이미지의 원본 크기(가로 너비)를 의미합니다. 예를 들어 `400x300`(px) 크기 이미지의 `w` 값은 `400w`입니다.
+
+        > 브라우저(User agent)는 지정된 `w` 디스크립터를 통해 각 이미지의 최적화된 픽셀 밀도를 계산합니다.
+
+        **srcset 예시**
+
+        ```html
+        <img
+            srcset="images/heropy_small.png 400w,
+                    images/heropy_medium.png 700w,
+                    images/heropy_large.png 1000w"
+            src="images/heropy.png"
+            alt="HEROPY"
+        />
+        ```
+
+        |![히어로 파이 w 예제1](images/3_2_small.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(small)|
+        뷰 포트 너비가 400px 이하일 때 `heropy_small.png`(400px)가 사용된 것을 볼 수 있습니다.
+
+        |![히어로 파이 w 예제2](images/3_2_medium.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(medium)|
+        뷰 포트 너비가 401~700px 이하일 때 `heropy_medium.png`(700px)가 사용된 것을 볼 수 있습니다.
+
+        |![히어로 파이 w 예제3](images/3_2_large.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(large)|
+        뷰 포트 너비가 401~700px 이하일 때 `heropy_large.png`(1000px)가 사용된 것을 볼 수 있습니다.
+
+        고정된 이미지 크기를 유지하려면 `width` 속성을 추가할 수 있습니다.
+
+        **srcset+width 예시**
+
+        ```html
+        <img
+            srcset="images/heropy_small.png 400w,
+                    images/heropy_medium.png 700w,
+                    images/heropy_large.png 1000w"
+            width="400"
+            src="images/heropy.png"
+            alt="HEROPY" />
+        ```
+        |![히어로 파이 width 예제1](images/3_3_small.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(small)|
+
+        |![히어로 파이 width 예제2](images/3_3_medium.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(medium)|
+
+        |![히어로 파이 width 예제2](images/3_3_large.png)|
+        |:--:|
+        |w 스크립터를 이용한 반응형 디자인(large)|
+    
+    - X descriptor
+        x 디스크립터는 이미지의 비율 의도를 의미합니다. 위 `w` 디스크립터에서 사용했던 예제를 다음과 같이 수정할 수 있습니다.
+        
+        ```html
+        <img
+            srcset="images/heropy_small.png 1x,
+                    images/heropy_medium.png 1.75x,
+                    images/heropy_large.png 2.5x"
+            src="images/heropy.png"
+            alt="HEROPY"
+        />
+        ```
+
+        `x` 디스크립터는 디바이스의 픽셀 비율(Device pixel ration)과 일치하는 값으로 최적화 선택됩니다. 일반적으로 정수(integer)값으로 제공하는 것이 좋습니다.
+
+
+- sizes
+
+    `sizes`는 미디어 조건과 그 조건에 해당하는 이미지의 '최적화 출력 크기'를 지정합니다.
+
+    ```html
+    <img
+        srcset="images/heropy_small.png 400w,
+                images/heropy_medium.png 700w,
+                images/heropy_large.png 1000w"
+        sizes="(min-width: 1000px) 700px"
+        src="images/heropy.png"
+        alt="HEROPY" />
+    ```
+    `sizes` 속성에 `min-width:1000px`이 추가되었기 때문에 이제 1000px이상일 경우에는 `heropy_medium.png`가 나타납니다.
+
+    |![sizes min-width 예시](images/3_4_medium.png)|
+    |:--:|
+    |sizes 속성에 min-width 추가 화면|
+
+    여기서 만약에 미디어 조건을 생략했을 경우 뷰포트 너비와 상관없이 `heropy_medium.png`만 사용되고 항상 `700px`의 크기를 가집니다.
+
+결과적으로 `width`는 이미지의 '출력 크기'만을 지정하는데 반해, `sizes`는 이미지의 '출력 크기' + '최적 크기'도 함께 지정하는 개념입니다.
+
+> 만약 `sizes`와 `width`를 같이 작성할 경우 `width`가 우선합니다.
+
+**호환성**
+|![srcset sizes 호환성](images/compatability_1.png)|
+|:--:|
+|`srcset`과 `sizes`의 호환성|
+
+
+### picture
+
+`<picture>`태그는 `<img>`요소의 다중 이미지 리소스를 위한 컨테이너를 정의할 때 사용합니다.
+
+`<picture>`요소는 뷰포트의 너비에 따라 커지거나 작아지는 하나의 이미지를 사용하는 대신 서로 다른 디스플레이나 기기에서 해당 뷰포트에 알맞게 채워질 수 있도록 여러 개의 이미지 중에서 적절한 이미지를 사용하게 해줍니다.
+
+`<picture>`요소는 0개 이상의 `<source>`요소와 하나의 `<img>`요소로 구성되며, 브라우저는 `<source>`요소 중에서 해당 뷰포트와 가장 잘 적합한 `<source>`요소를 선택합니다.
+
+브라우저는 `<source>`요소들의 속성값을 각각 확인해 나가며 조건을 만족하는 첫 번째 `<source>` 요소를 사용하고, 나머지 `<source>`요소들은 무시합니다. 이 때 `<img>`요소는 `<picture>`요소의 자식 요소 중에서 가장 마지막에 위치해야 합니다. 이러한 `<img>`요소는 `<picture>`요소를 지원하지 않는 브라우저를 위한 하위 호환성을 위해 사용되거나 명시된 `<source>`요소가 모두 조건을 만족하지 못 할 경우 사용합니다.
+
+`<source>`요소에도 `srcset`속성이 있습니다. 미디어 조건은 `media`속성을 통해 줄 수 있습니다. `type`속성을 통해 이미지의 종류를 지정해 줄 수 있으며 사용자의 브라우저가 `type`에 적힌 이미지를 지원하지 않을 경우 해당 `<source>`는 건너뜁니다.
+
+**예시**
+
+```html
+<picture>
+    <source media="(min-width: 700px)" srcset="images/heropy_medium.png">
+    <source media="(min-width: 400px)" srcset="/images/heropy_small.png">
+    <img src="images/heropy.png" alt="HEROPY">
+</picture>
+```
+|![pictures 예시1](images/3_5_medium.png)|
+|:--:|
+|`pictures`의 첫 번째 `source`|
+
+뷰포트 너비가 700px이상이기 때문에 첫번째 `source`요소가 나옵니다.
+
+|![pictures 예시2](images/3_5_small.png)|
+|:--:|
+|`pictures`의 두 번째 `source`|
+
+뷰포트의 너비가 400~699px 사이에 있기 때문에 두번째 `source`요소가 선택됩니다.
+
+|![pictures 예시3](images/3_5.png)|
+|:--:|
+|`pictures`의 `img`|
+
+두 `source`의 조건에 모두 만족하지 못했기 때문에 `heropy.png`파일이 나옵니다.
+
+**호환성**
+
+|![pictures 호환성](images/compatability_2.png)|
+|:--:|
+|`pictures` 호환성|
+
+### flexbox
+
+flextbox는 행이나 열로 아이템을 배치하는 일차원 레이아웃 메소드입니다. 아이템들은 부족한 공간에 맞추기 위해 축소되거나 여분의 공간을 채우기 위해 변형될 수 있습니다.
+
+**예제**
+
+```html
+<section class="content">
+    <div class="flexbox">
+        <div class="item">content1</div>
+        <div class="item">content2</div>
+        <div class="item">content3</div>
+        <div class="item">content4</div>
+    </div>
+</section>
+```
+
+```css
+.content{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.item{
+    min-height: 200px;
+    flex-basis: 150px;
+    flex-grow: 1;
+    background-color: aqua;
+    margin: 10px;
+}
+```
+|![플렉스 예제 1](images/flex_1.png)|
+|:--:|
+|플렉스를 이용한 레이아웃|
+
+|![플렉스 예제 2](images/flex_2.png)|
+|:--:|
+|뷰포트를 줄였을 때 나타나는 플렉스 레이아웃|
+
+뷰포트를 줄일 때 content4가 아래줄로 내려온 것을 볼 수 있습니다.
+
+**호환성**
+|![플렉스 호환성](images/compatability_3.png)|
+|:--:|
+|플렉스 호환성|
+
+
+### grid
+
+그리드 레이아웃은 페이지를 여러 주요 영역으로 나누거나, 크기와 위치 및 문서 계층 구조의 관점에서 편리합니다.
+
+테이블과 마찬가지로 그리드 레이아웃은 세로 열과 가로 행을 기준으로 요소를 정렬할 수 있습니다. 하지만, 테이블과 달리 그리드는 다양한 레이아웃을 훨씬 더 쉽게 구현할 수 있습니다. 예를 들어, 그리드 컨테이너 속 자식 요소를, 마치 CSS로 일일이 위치를 지정해 준 것처럼, 실제로 겹치게 층을 지면서 자리를 잡도록 각 요소의 위치를 지정해 줄 수도 있습니다.
+
+**예시**
+
+```html
+<ul class=”boxes”>
+    <li>
+        <div class=”boxes__text-wrapper”>
+            <h2>Title</h2>
+            <p>We worked hard.</p>
+        </div>
+    </li>
+</ul>
+```
+위 코드에서 보이는 `li`태그를 6개로 만든 뒤 화면에 출력하면 다음과 같습니다.
+
+|![그리드 예제](images/grid_1.png)|
+|:--:|
+|목록 생성|
+
+여기서 브라우저가 40em 이상일 때 그리드 컨테이너가 한 부분으로 6개의 컬럼을 갖도록 설정하려고 하면, 다음과 같이 CSS를 작성할 수 있습니다.
+
+```css
+.boxes {
+    display: grid;
+    grid-auto-rows: minmax(125px, auto);
+    grid-gap: .5rem;
+}
+@media screen and (min-width: 40em) {
+    .boxes {
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 2px;
+    }
+}
+```
+
+|![그리드 호환성](images/grid_2.png)|
+|:--:|
+|`grid` 미디어 쿼리 적용 화면|
+
+**호환성**
+
+|![그리드 호환성](images/compatability_4.png)|
+|:--:|
+|`grid` 호환성|
+
 <details>
 <summary>참고자료</summary>
 <a href="https://developer.mozilla.org/">MDN</a>
@@ -274,4 +609,20 @@ CSS 미디어 쿼리의 가장 큰 장점은 각 개별 장치에 대해 모든 
 <br />
 <a href="https://www.slideshare.net/labsnc/04-28190062">반응형웹에서접근성확보방법(LAB Snc)</a>
 <br />
+<a href="https://heropy.blog/2019/06/16/html-img-srcset-and-sizes/">이미지 사용 출처</a>
+<br>
+<a href="https://developer.mozilla.org/ko/docs/Web/CSS/grid">MDN Grid</a>
+<br>
+<a href="https://developer.mozilla.org/ko/docs/Web/CSS/flex">MDN Flex</a>
+<br>
+<a href="https://developer.mozilla.org/ko/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">MDN 반응형 이미지</a>
+<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN picture</a>
+<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN Pictures</a>
+<br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN CSS 값과 단위</a>
+<br>
+<a href="https://caniuse.com">Can I Use</a>
+<br>
 </details>
